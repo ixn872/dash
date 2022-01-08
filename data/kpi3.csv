@@ -1,14 +1,9 @@
 KPI,Strategy,Benchmark SPY
-Total return,160025%,1588.99%
-CAGR,30.17%,10.63%
-Max drawdown,-16.9%,-54.61%
-Calmar,1.7857,0.1946
-MTD,2.33%,3.85%
-Return last 3 months,8.09%,7.37%
-Return last 6 months,12.7%,12.08%
-YTD,38.07%,30.43%
-Return last 1 year,38.07%,30.43%
-Return last 3 years,39.96%,25.65%
-Returns last 5 years,36.11%,18.03%
-Returns last 10 years,31.59%,16.27%
-Returns since inception,30.17%,10.63%
+Monthly sharpe,1.817,0.732
+Monthly sortino,7.4968,1.2364
+Monthly mean,27.8%,11.31%
+Monthly volatility,15.3%,15.45%
+Monthly skewness,2.1547,-0.6159
+Monthly kurtosis,7.8351,1.7364
+Best month,27.09%,13.65%
+Worst month,-12.83%,-19.88%
