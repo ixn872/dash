@@ -168,7 +168,7 @@ app.layout = html.Div(
                                     html.P(                                   
 
                                         "\
-     This report summarizes the results of the fund's strategy over the last 27 years. The results are benchmarked against the S&P 500 Index by comparison with the ETF SPY. This strategy applies systematic trading using quantitative models derived from mathematical and statistical analysis. The algorithms are continuously improved with machine learning. The underlying security for this backtest is the ETF SPY with 3X leverage in 26% of the total trades.",
+     This report summarizes the backtest results of the fund's strategy over the last 27 years. The results are benchmarked against the S&P 500 Index by comparison with the ETF SPY. This strategy applies systematic trading using quantitative models derived from mathematical and statistical analysis. The algorithms are continuously improved with machine learning. The underlying security for this backtest is the ETF SPY with 3X leverage in 26% of the total trades.",
                                         style={"color": "#ffffff",'width': '100%'},
                                     ),
                                 ],
@@ -444,7 +444,7 @@ dbc.Row([
                                         ,trace_benchmark_drawdown],
                         "layout":
                                 go.Layout(
-                                # title='Histogram of Strategy and Benchmark Daily Returns',
+                                # title='Histogram of Strategy and Benchmark Weekly Returns',
                                 # autosize=True,
                                 height=600,
                                 font={"family": "Raleway", "size": 10},
@@ -491,7 +491,7 @@ dbc.Col([
 
            
             html.H6(
-                        "Boxplot of Strategy and Benchmark Daily Returns",className="subtitle"
+                        "Boxplot of Strategy and Benchmark Weekly Returns",className="subtitle"
                     ),
                              
         dcc.Graph(id = "idk2", 
@@ -501,7 +501,7 @@ dbc.Col([
                                         ,trace_box2],
                         "layout":
                                 go.Layout(
-                                # title='Histogram of Strategy and Benchmark Daily Returns',
+                                # title='Histogram of Strategy and Benchmark Weekly Returns',
                                 autosize=True,
                                 height=600,
                                 font={"family": "Raleway", "size": 10},
@@ -563,7 +563,7 @@ dbc.Row([
 dbc.Col([
 
                     html.H6(
-                        "Histogram of Strategy and Benchmark Daily Returns",className="subtitle"
+                        "Histogram of Strategy and Benchmark Weekly Returns",className="subtitle"
                         
                     ),                            
         dcc.Graph(id = "idk3", 
@@ -579,7 +579,7 @@ dbc.Col([
                                         ,trace1],
                         "layout":
                                 go.Layout(
-                                # title='Histogram of Strategy and Benchmark Daily Returns',
+                                # title='Histogram of Strategy and Benchmark Weekly Returns',
                                 autosize=True,
                                 height=600,
                                 font={"family": "Raleway", "size": 10},
