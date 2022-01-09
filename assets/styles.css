@@ -152,7 +152,8 @@ li {
 }
 
 .product {
-  position: relative;
+
+ position: relative;
   height: 15%;
   padding: 30px;
   width:100%;
@@ -161,6 +162,8 @@ li {
   border-radius: 1px;
   background: #98151b;
   color: #ffffff;
+
+
 }
 .full-view-link {
   background-color: rgb(152, 21, 27);
@@ -186,6 +189,12 @@ li {
   border-left: 20px solid #98151b;
   background: #ffffff;
   padding-left: 30px;
+}
+
+.foot{
+ color: #98151b;
+  font-size:16px;
+
 }
 
 .subtitle {

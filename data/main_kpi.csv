@@ -1,8 +1,9 @@
-KPI,Value
-Period,1994-2021
-Total return,160025%
-CAGR,30.17%
-Yearly volatility,22.83%
-Max drawdown,-16.90%
-Avg. drawdown,-2.40%
-Win/Loss ratio,93.28%
+KPI,Strategy Backtest, Benchmark SPY
+Period,1994-2021,1994-2021
+Total return,160025%,1589%
+CAGR,30.17%,10.63%
+Yearly volatility,22.83%,18.69%
+Max drawdown,-16.90%,-54.61%
+Avg. drawdown,-2.40%,-3.45%
+Win/Loss ratio,93.28%,
+Avg. days in cash,65%,

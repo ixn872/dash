@@ -34,9 +34,7 @@ import os
 
 
 
-df_monthly = pd.read_csv("data/monthly_table.csv",sep = ';')
-#df_stats = pd.read_csv("data/statistics.csv")
-
+df_monthly = pd.read_csv("data/monthly_table.csv",sep = ';').replace(0.0,"-")
 df_prices = pd.read_csv("data/res1.csv")
 df_trades = pd.read_csv("data/trades.csv")
 df_drawdowns = pd.read_csv("data/drawdowns.csv")
@@ -141,12 +139,9 @@ app.layout = html.Div(
 
         [
 
-            html.Div(html.Div(
-        [
-          
-
-            dbc.Row(
-                [
+            html.Div(
+	html.Div([
+            dbc.Row([
                     html.Div(
                         html.H6(
                             "Sofaer Technologies",className="seven columns main-title",style = {"padding-left":"20px","padding-top":"20px"}
@@ -157,14 +152,9 @@ app.layout = html.Div(
                         className="seven columns main-title",
                     ),
 
-                ], style = {"padding-bottom":"135px!important","padding-left": "0px","padding-top":"40px"}
-            )
-  
-
-
-
-        ],
-    )),
+                ], style = {"padding-bottom":"135px!important","padding-left": "0px","padding-top":"40px"})
+        	],className = "header-space",style = {"padding-bottom":"135px!important","padding-left": "0px","padding-top":"40px"})
+),
             # page 1
             html.Div(
                 [
@@ -184,7 +174,7 @@ app.layout = html.Div(
                                 ],
                                 className="product",
                             )
-                        ],
+                        ],style = {"padding-top":"40px!important"}
                     ),
                     # Row 4
                     dbc.Row(
@@ -281,7 +271,7 @@ app.layout = html.Div(
                                                 },
                                                 showlegend=True,
                                                 title="",
-                                                width=400,
+                                                width=450,
                                                 xaxis={
                                                     "autorange": True,
                                                     "range": [-0.5, 4.5],
@@ -300,9 +290,9 @@ app.layout = html.Div(
                                                 },
                                             ),
                                         },
-                                        config={"displayModeBar": False},
+                                        config={"displayModeBar": True , 'displaylogo': False},
                                     ),
-                                ],
+                                ],style = {"padding-left":"50px!important"},
                             ),
                         ], justify="evenly"
                     ),
@@ -362,7 +352,7 @@ dbc.Row([
                                             )
                                     
                                         },
-                                        config={"displayModeBar": False},
+                                        config={"displayModeBar": True,'displaylogo': False},
 
                                     ),
                                     ]),  
@@ -483,7 +473,7 @@ dbc.Row([
                                 )
                         },
                                 
-                 config={"displayModeBar": False}                                  
+                 config={"displayModeBar": True ,'displaylogo': False}                                  
                     ),
          ]), 
         ]),
@@ -548,7 +538,7 @@ dbc.Col([
                                 )
                         },
                                 
-                 config={"displayModeBar": False}                                  
+                 config={"displayModeBar": True, 'displaylogo': False}                                  
                     ),
             
         ]),]),
@@ -624,10 +614,18 @@ dbc.Col([
                                 )
                         },
                                 
-                 config={"displayModeBar": False}                                  
+                 config={"displayModeBar": True, 'displaylogo': False}                                  
                     ),
             
         ]),]),
+
+
+
+
+	dbc.Row([dbc.Col([html.P("info@sofaertechnologies.com",className="foot")])],justify="center"),
+
+
+
 
    
 

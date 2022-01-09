@@ -14,6 +14,8 @@ body {
   -moz-box-sizing: border-box;
 }
 .page {
+padding-left:90px!important;
+padding-right:90px!important;
   position: relative;
   width: 100%!important;
   min-height: 300mm;
@@ -30,6 +32,12 @@ body {
 
   /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
 }
+
+
+.header-space{
+	padding-bottom:40px!important;
+}
+
 
 /* 
 @media (min-width: 768px)
@@ -164,9 +172,7 @@ table.tiny-header tr:first-child {
 
 
 .col {
-  padding-right:65px!important;
-  padding-left: 65px!important;
-  padding-bottom:43px!important;
+
   padding-top: 43px!important;
 }
 /* .columns{ margin-left: 0 !important; } */
