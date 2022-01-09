@@ -267,11 +267,11 @@ app.layout = html.Div(
                                                     "r": 0,
                                                     "t": 20,
                                                     "b": 10,
-                                                    "l": 10,
+                                                    "l": 20,
                                                 },
                                                 showlegend=True,
                                                 title="",
-                                                width=450,
+                                                #width=450,
                                                 xaxis={
                                                     "autorange": True,
                                                     "range": [-0.5, 4.5],
@@ -306,7 +306,7 @@ app.layout = html.Div(
 dbc.Col([
     html.Div([
     html.H6(
-                         "Monthly Table (%)",className="subtitle"
+                         "Monthly Table and Yearly Returns  (%)",className="subtitle"
                                         ), 
 
 
@@ -339,7 +339,7 @@ dbc.Row([
                                             "layout" : go.Layout(                                               
                                                  font={"family": "Raleway", "size": 10},
                                                  showlegend = True,
-                                                 height = 450,
+                                                 #height = 450,
                                                 #  width = 550,
                                                  autosize=True,
                                                 xaxis={
@@ -445,8 +445,12 @@ dbc.Row([
                         "layout":
                                 go.Layout(
                                 # title='Histogram of Strategy and Benchmark Weekly Returns',
-                                # autosize=True,
-                                height=600,
+                                autosize=True,
+				#Margin = 0,	
+
+				#pad = 0,
+                                #height=600,
+				width =1000,
                                 font={"family": "Raleway", "size": 10},
 
                                 # hovermode = 'closest',
@@ -503,7 +507,7 @@ dbc.Col([
                                 go.Layout(
                                 # title='Histogram of Strategy and Benchmark Weekly Returns',
                                 autosize=True,
-                                height=600,
+                                #height=600,
                                 font={"family": "Raleway", "size": 10},
 
                                 hovermode = 'closest',
@@ -581,7 +585,7 @@ dbc.Col([
                                 go.Layout(
                                 # title='Histogram of Strategy and Benchmark Weekly Returns',
                                 autosize=True,
-                                height=600,
+                                #height=600,
                                 font={"family": "Raleway", "size": 10},
 
                                 hovermode = 'closest',

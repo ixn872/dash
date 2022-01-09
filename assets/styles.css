@@ -305,7 +305,13 @@ a:active {
   }
   .page {
     width: auto;
-  }
+    width: 100%!important;
+    padding: 10px!important;
+}
+
+
+
+
   .sub_page {
     width: auto;
   }
@@ -347,10 +353,10 @@ a:active {
     padding: 0 0;
   }
   .svg-container {
-    width: 255px !important;
+    width: 400px !important;
   }
   .main-svg {
-    width: 255px !important;
+    width: 400px !important;
   }
   .three.columns {
     text-align: left;
