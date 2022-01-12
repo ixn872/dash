@@ -24,17 +24,10 @@ import dash_bootstrap_components as dbc
 import os 
 
 
-
-
-
-
-
 # get relative data folder
 
 
-
-
-df_monthly = pd.read_csv("data/monthly_table.csv",sep = ';').replace(0.0,"-")
+df_monthly = pd.read_csv("data/monthly_table.csv",sep = ',').replace(0.0,"-")
 df_prices = pd.read_csv("data/res1.csv")
 df_trades = pd.read_csv("data/trades.csv")
 df_drawdowns = pd.read_csv("data/drawdowns.csv")
@@ -43,6 +36,15 @@ df_kpi2 = pd.read_csv("data/kpi2.csv")
 df_kpi3 = pd.read_csv("data/kpi3.csv")
 df_kpi4 = pd.read_csv("data/kpi4.csv")
 df_kpi5 = pd.read_csv("data/kpi5.csv")
+
+import numpy as np
+vol_df = df_prices.copy()
+vol_df['Log returns b'] = np.log(vol_df['benchmark']/vol_df['benchmark'].shift())
+vol_df['Log returns s'] = np.log(vol_df['equity_curve']/vol_df['equity_curve'].shift())
+
+
+
+
 
 
 red = 'rgb(151,21,28)'
@@ -110,6 +112,27 @@ trace_benchmark_drawdown = go.Scatter(
                     line = dict(color = (grey)))
 
 
+###
+
+trace_equity_return = go.Scatter(
+                    x=list(vol_df['date']),
+                    y=list(vol_df['Log returns s']),
+                    name='Strategy Backtest',
+                    yaxis='y2',
+                    line = dict(color = (red)))
+
+trace_benchmark_return = go.Scatter(
+                    x=list(vol_df['date']),
+                    y=list(vol_df['Log returns b']),
+                    name='S&P 500 Index',
+                    yaxis='y2',
+                    line = dict(color = (grey)))
+
+
+
+###
+
+
 
 trace_box1 = go.Box(y=df_prices['equity_curve'].pct_change().values,
                 name="Strategy Backtest",
@@ -136,23 +159,32 @@ server = app.server
 
 # Describe the layout/ UI of the app
 app.layout = html.Div(
-
         [
 
-            html.Div(
-	html.Div([
+    html.Div(
+	    html.Div([
             dbc.Row([
-                    html.Div(
-                        html.H6(
-                            "Sofaer Technologies",className="seven columns main-title",style = {"padding-left":"20px","padding-top":"20px"}
-                        ),
-                    ),
-                    html.Div(
-                        html.H5("Combined Strategy Backtest Report"),
-                        className="seven columns main-title",
-                    ),
+                    # html.Div(
+                    #     html.H6(
+                    #         "Sofaer Technologies",className="seven columns main-title",style = {"padding-left":"20px","padding-top":"20px"}
+                    #     ),
+                    # ),
+                    # html.Div(
+                    #     html.H5("Combined Strategy Backtest Report"),
+                    #     className="seven columns main-title",
+                    # ),
 
-                ], style = {"padding-bottom":"135px!important","padding-left": "0px","padding-top":"40px"})
+                    html.Div(
+                        html.H5(
+                            "Sofaer Technologies"
+                        ),className="seven columns main-title"),
+
+
+                    html.Div(
+                        html.H5("Combined Strategy Backtest Report"), className="seven columns main-title"
+                    )])
+
+
         	],className = "header-space",style = {"padding-bottom":"135px!important","padding-left": "0px","padding-top":"40px"})
 ),
             # page 1
@@ -271,7 +303,7 @@ app.layout = html.Div(
                                                 },
                                                 showlegend=True,
                                                 title="",
-                                                #width=450,
+                                                width=450,
                                                 xaxis={
                                                     "autorange": True,
                                                     "range": [-0.5, 4.5],
@@ -560,68 +592,146 @@ dbc.Col([
 
 
        
-dbc.Row([
+# dbc.Row([
 
  
 
-dbc.Col([
+# dbc.Col([
 
-                    html.H6(
-                        "Histogram of Strategy and Benchmark Weekly Returns",className="subtitle"
+#                     html.H6(
+#                         "Histogram of Strategy and Benchmark Weekly Returns",className="subtitle"
                         
-                    ),                            
-        dcc.Graph(id = "idk3", 
-                figure = { "data": 
-                                [
-                                        go.Histogram(x=df_prices['equity_curve'].pct_change().values,
-                                        name="Strategy",
-                                        opacity=0.75,
-                                        marker=dict(
-                                        color=('rgb(151,21,28)')),
-                                        xbins=dict(
-                                        size=0.0025))
-                                        ,trace1],
-                        "layout":
-                                go.Layout(
-                                # title='Histogram of Strategy and Benchmark Weekly Returns',
-                                autosize=True,
-                                #height=600,
-                                font={"family": "Raleway", "size": 10},
+#                     ),                            
+#         dcc.Graph(id = "idk3", 
+#                 figure = { "data": 
+#                                 [
+#                                         go.Histogram(x=df_prices['equity_curve'].pct_change().values,
+#                                         name="Strategy",
+#                                         opacity=0.75,
+#                                         marker=dict(
+#                                         color=('rgb(151,21,28)')),
+#                                         xbins=dict(
+#                                         size=0.0025))
+#                                         ,trace1],
+#                         "layout":
+#                                 go.Layout(
+#                                 # title='Histogram of Strategy and Benchmark Weekly Returns',
+#                                 autosize=True,
+#                                 #height=600,
+#                                 font={"family": "Raleway", "size": 10},
 
-                                hovermode = 'closest',
-                                barmode='overlay',
+#                                 hovermode = 'closest',
+#                                 barmode='overlay',
                                                                                  
-                                showlegend=True,
-                                xaxis={
-                                    "autorange": True,
-                                    "linecolor": "rgba(127, 127, 127, 0.2)",
-                                    # "linewidth": 1,
-                                    "showgrid": False,
-                                    # "showline": True,
-                                    "title": "",
-                                    "type": "linear",
-                                },
-                                yaxis={
-                                    "autorange": True,
-                                    "gridcolor": "rgba(127, 127, 127, 0.2)",
-                                    "mirror": False,
-                                    "nticks": 5,
-                                    "showgrid": True,
-                                    # "showline": True,
-                                    "ticklen": 10,
-                                    "ticks": "outside",
-                                    # "title": "%",
-                                    "type": "linear",
-                                    "zeroline": False,
-                                    "zerolinewidth": 4,
-                                },
-                                )
-                        },
+#                                 showlegend=True,
+#                                 xaxis={
+#                                     "autorange": True,
+#                                     "linecolor": "rgba(127, 127, 127, 0.2)",
+#                                     # "linewidth": 1,
+#                                     "showgrid": False,
+#                                     # "showline": True,
+#                                     "title": "",
+#                                     "type": "linear",
+#                                 },
+#                                 yaxis={
+#                                     "autorange": True,
+#                                     "gridcolor": "rgba(127, 127, 127, 0.2)",
+#                                     "mirror": False,
+#                                     "nticks": 5,
+#                                     "showgrid": True,
+#                                     # "showline": True,
+#                                     "ticklen": 10,
+#                                     "ticks": "outside",
+#                                     # "title": "%",
+#                                     "type": "linear",
+#                                     "zeroline": False,
+#                                     "zerolinewidth": 4,
+#                                 },
+#                                 )
+#                         },
                                 
-                 config={"displayModeBar": True, 'displaylogo': False}                                  
-                    ),
+#                  config={"displayModeBar": True, 'displaylogo': False}                                  
+#                     ),
             
-        ]),]),
+#         ]),]),
+
+
+
+
+
+
+
+
+#Weekly returns
+# dbc.Row([
+
+#          dbc.Col([ 
+
+#                      html.H6(
+#                         "Weekly Returns",className="subtitle"
+#                     ),
+         
+#         dcc.Graph(id = "idk6", 
+#                 figure = { "data": 
+#                                 [
+#                                         trace_equity_return
+#                                         ,trace_benchmark_return],
+#                         "layout":
+#                                 go.Layout(
+#                                 # title='Histogram of Strategy and Benchmark Weekly Returns',
+#                                 autosize=True,
+# 				#Margin = 0,	
+
+# 				#pad = 0,
+#                                 #height=600,
+# 				width =1000,
+#                                 font={"family": "Raleway", "size": 10},
+
+#                                 # hovermode = 'closest',
+#                                 # barmode='overlay',
+                                                                                 
+#                                 showlegend=True,
+#                                 xaxis={
+#                                     # "autorange": True,
+#                                     "linecolor": "rgba(127, 127, 127, 0.2)",
+#                                     # "linewidth": 1,
+#                                     "showgrid": False,
+#                                     # "showline": True,
+#                                     # "title": "",
+#                                     # "type": "linear",
+#                                 },
+#                                 yaxis={
+#                                     "gridcolor": "rgba(127, 127, 127, 0.2)",
+                                  
+#                                     "showgrid": True,
+                           
+#                                     "zeroline": False,
+#                                     "zerolinewidth": 4,
+#                                 },
+#                                 )
+#                         },
+                                
+#                  config={"displayModeBar": True ,'displaylogo': False}                                  
+#                     ),
+#          ]), 
+#         ]),
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

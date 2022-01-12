@@ -188,7 +188,7 @@ li {
   width: 80%;
   border-left: 20px solid #98151b;
   background: #ffffff;
-  padding-left: 30px;
+  padding-left: 20px!important;
 }
 
 .foot{
@@ -198,8 +198,6 @@ li {
 }
 
 .subtitle {
-
-
   position: relative;
   color: #3a3a3a;
   left: 0;
@@ -212,12 +210,6 @@ li {
   padding-bottom: 15px;
   padding-left: 30px;
   padding-right: 60px;
-
-
-
-
-
-
 
 }
 
@@ -366,6 +358,24 @@ a:active {
   .nine.columns {
     padding: 0 20px !important;
   }
+
+  .subtitle{
+    position: relative;
+    color: #3a3a3a;
+    left: 0;
+    font-size: 15px;
+    height: 30px;
+    margin-bottom: 6mm;
+    border-left: 5px solid #98151b;
+    background: #ffffff;
+    padding-top: 1px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 60px;
+  
+  }
+
+
 }
 @media only screen and (max-width: 400px) {
   .full-view-link {
